@@ -1,18 +1,20 @@
-// Agar user logged in nahi hai toh use login page par bhej do
-if (!localStorage.getItem("playerLoggedIn") && window.location.pathname.includes("index.html")) {
-    // temporarily allowing path routing
+
+if (!localStorage.getItem("playerLoggedIn")) {
+    window.location.href = "login.html";
 }
+
+let randomNumber = Math.floor(Math.random() * 100) + 1;
 let randomNumber = Math.floor(Math.random() * 100) + 1;
 
 let attempts = 10;
 let score = 100; 
 
-// Pehle se save total score check karo, nahi toh 0 set karo
+
 let totalScore = localStorage.getItem("totalScore") ? Number(localStorage.getItem("totalScore")) : 0;
 
-// Page load hote hi UI par total score dikhane ke liye
+
 document.addEventListener("DOMContentLoaded", () => {
-    const totalScoreDisplay = document.getElementById("totalScoreDisplay"); // Agar aapne id di ho
+    const totalScoreDisplay = document.getElementById("totalScoreDisplay"); 
     if (totalScoreDisplay) {
         totalScoreDisplay.innerHTML = totalScore;
     }
@@ -29,22 +31,19 @@ function checkGuess() {
         return;
     }
 
-    // if(guess === randomNumber){
-    //     message.innerHTML = "🎉 Congratulations! You Won!";
-    //     message.style.color = "#22c55e";
-    //     return;
-    // } 
+
+    
     if(guess === randomNumber){
     message.innerHTML = "🎉 Congratulations! You Won!";
     message.style.color = "#22c55e";
     
-    // Naya logic: chalte game ka score total score me jod do
+   
     totalScore += score;
     
-    // Browser me permanently save kar lo
+  
     localStorage.setItem("totalScore", totalScore);
     
-    // UI par turant bada hua score dikhao
+  
     const totalScoreDisplay = document.getElementById("totalScoreDisplay");
     if (totalScoreDisplay) {
         totalScoreDisplay.innerHTML = totalScore;
@@ -80,7 +79,7 @@ function restartGame(){
     document.getElementById("attempts").innerHTML = attempts;
     document.getElementById("score").innerHTML = score;
     document.getElementById("message").innerHTML = "Start guessing...";
-    document.getElementById("message").style.color = "white"; // Reset color on restart
+    document.getElementById("message").style.color = "white"; 
     document.getElementById("guessInput").value = "";
 }
 
