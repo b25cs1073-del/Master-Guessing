@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head> 
+    <script>
+        // Agar browser me login ka flag nahi hai, toh seedhe login page par fenko
+        if (!localStorage.getItem("playerLoggedIn")) {
+            window.location.href = "login.html";
+        }
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kartik_y21 Number Guessing Game</title>
