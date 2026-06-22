@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kartik_y21 Number Guessing Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Background Moving Div -->
+    <div id="particles-js"></div>
+
+    <!-- Aapka Game Container -->
+    <div class="container">
+        <h1>Kartik_y21 Number Guessing Game</h1>
+        <p class="range">Guess a number between 1 and 100</p>
+
+        <div class="stats">
+            <span>Attempts Left: <b id="attempts">10</b></span>
+            <span>Score: <b id="score">100</b></span>
+            <span>Total Score: <b id="totalScoreDisplay">0</b></span>
+        </div>
+
+        <input type="number" id="guessInput" placeholder="Enter your guess">
+        <button onclick="checkGuess()">Guess</button>
+        <div id="message">Start guessing...</div> 
+        <button class="restart" onclick="restartGame()">Restart Game</button>
+    </div>
+
+    <!-- 1. Pehle Particles Library (CDN) Link Ki -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> 
+    
+    <!-- 2. Fir Aapki Game Logic aur Configuration Link Ki -->
+    <script src="script.js"></script> 
+
+</body>
+</html>

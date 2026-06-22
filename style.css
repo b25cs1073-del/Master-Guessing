@@ -1,0 +1,112 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow: hidden; /* Taaki extra scrollbar na aaye */
+    background: #0b0c10; /* Dark premium space theme background */
+}
+
+/* Particles Background Fitting */
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1; /* Piche rahega */
+}
+
+.container{
+    position: relative;
+    z-index: 2; /* Particles ke upar laane ke liye */
+    width:600px;
+    padding:50px;
+    border-radius:25px;
+    background:rgba(255,255,255,0.05); /* Backdrop setting */
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,0.15);
+
+    box-shadow:
+    0 0 30px rgba(0,255,255,0.2),
+    0 0 60px rgba(0,255,255,0.1);
+
+    text-align:center;
+    color:white;
+}
+
+h1{
+    font-size:3.5rem;
+    margin-bottom:30px;
+}
+
+.range{
+    color:#cbd5e1;
+    margin-bottom:25px;
+}
+
+.stats{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:20px;
+    font-size:18px;
+}
+
+input{
+    width:100%;
+    padding:25px;
+    border:none;
+    outline:none;
+    border-radius:12px;
+    font-size:18px;
+    margin-top:10px;
+    text-align:center;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    margin-top:15px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:18px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+button:hover{
+    transform:translateY(-3px);
+}
+
+button:first-of-type{
+    background:#06b6d4;
+    color:white;
+}
+
+.restart{
+    background:#ef4444;
+    color:white;
+}
+
+#message{
+    margin-top:20px;
+    font-size:22px;
+    font-weight:bold;
+} 
+
+@keyframes move{
+    from{
+        transform:translateY(0);
+    }
+    to{
+        transform:translateY(-500px);
+    }
+}
