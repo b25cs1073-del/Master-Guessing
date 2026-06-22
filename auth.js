@@ -2,7 +2,7 @@
 
 
 
-// Firebase v9 Compat Web SDKs ko import kiya
+
 import "https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js";
 import "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js";
 
@@ -64,7 +64,8 @@ window.handleAuth = function() {
     if (isLoginMode) {
         // Login Processing
         auth.signInWithEmailAndPassword(email, password)
-            .then(() => {
+            .then(() => { 
+                localStorage.setItem("playerLoggedIn", "true"); 
                 window.location.href = "index.html"; 
             })
             .catch((error) => {
@@ -74,7 +75,8 @@ window.handleAuth = function() {
     } else {
         // Sign Up Processing
         auth.createUserWithEmailAndPassword(email, password)
-            .then(() => {
+            .then(() => { 
+                 localStorage.setItem("playerLoggedIn", "true"); 
                 message.style.color = "#22c55e";
                 message.innerHTML = "🎉 Account Created! Logging in...";
                 setTimeout(() => {
