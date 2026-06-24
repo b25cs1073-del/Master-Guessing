@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
+<head>  
+
     <script>
+  // Agar localStorage mein user login ka data nahi hai
+  if (!localStorage.getItem('isLoggedIn')) { 
+      // toh use login page par bhej do
+      window.location.href = 'login.html';
+  }
+</script>
+    <!-- <script>
         
         if (!localStorage.getItem("playerLoggedIn")) {
             window.location.href = "login.html";
         }
-    </script>
+    </script> -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kartik_y21 Number Guessing Game</title>
