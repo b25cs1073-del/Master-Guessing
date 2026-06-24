@@ -66,7 +66,7 @@ window.handleAuth = function() {
         auth.signInWithEmailAndPassword(email, password)
             .then(() => { 
                 localStorage.setItem("playerLoggedIn", "true"); 
-                window.location.href = "index.html"; 
+                window.location.href = "game.html"; 
             })
             .catch((error) => {
                 message.style.color = "#ef4444";
@@ -80,7 +80,7 @@ window.handleAuth = function() {
                 message.style.color = "#22c55e";
                 message.innerHTML = "🎉 Account Created! Logging in...";
                 setTimeout(() => {
-                    window.location.href = "index.html";
+                    window.location.href = "game.html";
                 }, 1500);
             })
             .catch((error) => {
