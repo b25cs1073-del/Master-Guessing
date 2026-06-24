@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>  
-
-    <script>
-  // Agar localStorage mein user login ka data nahi hai
-  if (!localStorage.getItem('isLoggedIn')) { 
-      // toh use login page par bhej do
-      window.location.href = 'index.html';
+      <script>
+  if (localStorage.getItem("playerLoggedIn") !== "true") {
+      window.location.href = "index.html"; // Kyunki ab login page index.html ban chuka hai
   }
+</script>
+   
 </script>
     
     <meta charset="UTF-8">
