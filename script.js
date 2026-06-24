@@ -4,7 +4,7 @@ if (!localStorage.getItem("playerLoggedIn")) {
 }
 
 let randomNumber = Math.floor(Math.random() * 100) + 1;
-let randomNumber = Math.floor(Math.random() * 100) + 1;
+// let randomNumber = Math.floor(Math.random() * 100) + 1;
 
 let attempts = 10;
 let score = 100; 
@@ -26,7 +26,7 @@ function checkGuess() {
     let guess = Number(document.getElementById("guessInput").value);
     let message = document.getElementById("message");
 
-    if(!guess){
+    if(guess === randomNumber){
         message.innerHTML = "⚠ Enter a valid number";
         return;
     }
