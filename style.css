@@ -39,8 +39,15 @@ body{
     0 0 60px rgba(0,255,255,0.1);
 
     text-align:center;
-    color:white;
+    color:white;  
 }
+
+    .container {
+    width: 450px;
+    max-width: 95%; /* Isse mobile screen par chipkega nahi, side me thoda gap rahega */
+    /* ... baki purani styling */
+}
+
 
 h1{
     font-size:3.5rem;
