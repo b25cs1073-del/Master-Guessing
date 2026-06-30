@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 function checkGuess() {
-    let guessInput = document.getElementById("guessInput").value;
+    let guessInput = document.getElementById("guessInput").value.trim();
     let message = document.getElementById("message");
 
     // 1. Check karo agar input khali hai
