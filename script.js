@@ -22,65 +22,119 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //
 
+
+
 function checkGuess() {
-    let inputElement = document.getElementById("guessInput");
+    let guessInput = document.getElementById("guessInput").value;
     let message = document.getElementById("message");
 
-  
-    if (!inputElement) return;
-
-
-    let inputValue = inputElement.value.trim();
-
-    if (inputValue === "") {
+    // 1. Check karo agar input khali hai
+    if (guessInput === "") {
         message.innerHTML = "⚠ Enter a valid number";
-        message.style.color = "#f87171";
+        message.style.color = "#f87171"; // Red color
         return;
     }
 
+    let guess = Number(guessInput);
 
-    let guess = Number(inputValue);
-    
-    if(guess === randomNumber){
-    message.innerHTML = "🎉 Congratulations! You Won!";
-    message.style.color = "#22c55e";
-    
-   
-    totalScore += score;
-    
-  
-    localStorage.setItem("totalScore", totalScore);
-    
-  
-    const totalScoreDisplay = document.getElementById("totalScoreDisplay");
-    if (totalScoreDisplay) {
-        totalScoreDisplay.innerHTML = totalScore;
-    }
-    return;
-} 
-//
+    // 2. JAB USER WIN HO JAYE (Sahi guess kare) 🎉
+    if (guess === randomNumber) {
+        message.innerHTML = "🎉 Congratulations! You Won!";
+        message.style.color = "#22c55e"; // Ekdum mast Green color
+        
+        // Total score update aur save karne ke liye
+        totalScore += score;
+        localStorage.setItem("totalScore", totalScore);
+        
+        const totalScoreDisplay = document.getElementById("totalScoreDisplay");
+        if (totalScoreDisplay) {
+            totalScoreDisplay.innerHTML = totalScore;
+        }
+        return; // Yahin se baahar nikal jao, niche ka code mat chalao!
+    } 
 
+    // 3. Agar guess galat hai, toh attempts aur score kam karo
     attempts--;
     score -= 10;
 
     document.getElementById("attempts").innerHTML = attempts;
     document.getElementById("score").innerHTML = score;
 
-    if(attempts === 0){
+    // 4. Game Over check
+    if (attempts === 0) {
         message.innerHTML = `💀 Game Over! Number was ${randomNumber}`;
         message.style.color = "#f87171";
         return;
     }
 
-    if(guess > randomNumber){
+    // 5. Galat guess par high/low ka hint do
+    if (guess > randomNumber) {
         message.innerHTML = "📈 Too High! Try Lower";
-        message.style.color = "#38bdf8";
-    }
-    else{
+        message.style.color = "#38bdf8"; // Blue color
+    } else {
         message.innerHTML = "📉 Too Low! Try Higher";
-        message.style.color = "#38bdf8";
+        message.style.color = "#38bdf8"; // Blue color
     }
-}
+// }
+// function checkGuess() {
+//     let inputElement = document.getElementById("guessInput");
+//     let message = document.getElementById("message");
+
+  
+//     if (!inputElement) return;
+
+
+//     let inputValue = inputElement.value.trim();
+
+//     if (inputValue === "") {
+//         message.innerHTML = "⚠ Enter a valid number";
+//         message.style.color = "#f87171";
+//         return;
+//     }
+
+
+//     let guess = Number(inputValue);
+    
+//     if(guess === randomNumber){
+//     message.innerHTML = "🎉 Congratulations! You Won!";
+//     message.style.color = "#22c55e";
+    
+   
+//     totalScore += score;
+    
+  
+//     localStorage.setItem("totalScore", totalScore);
+    
+  
+//     const totalScoreDisplay = document.getElementById("totalScoreDisplay");
+//     if (totalScoreDisplay) {
+//         totalScoreDisplay.innerHTML = totalScore;
+//     }
+//     return;
+// } 
+// //
+
+//     attempts--;
+//     score -= 10;
+
+//     document.getElementById("attempts").innerHTML = attempts;
+//     document.getElementById("score").innerHTML = score;
+
+//     if(attempts === 0){
+//         message.innerHTML = `💀 Game Over! Number was ${randomNumber}`;
+//         message.style.color = "#f87171";
+//         return;
+//     }
+
+//     if(guess > randomNumber){
+//         message.innerHTML = "📈 Too High! Try Lower";
+//         message.style.color = "#38bdf8";
+//     }
+//     else{
+//         message.innerHTML = "📉 Too Low! Try Higher";
+//         message.style.color = "#38bdf8";
+//     }
+// }
 
 function restartGame(){
     randomNumber = Math.floor(Math.random() * 100) + 1;
