@@ -23,15 +23,23 @@ document.addEventListener("DOMContentLoaded", () => {
 //
 
 function checkGuess() {
-    let guess = Number(document.getElementById("guessInput").value);
+    let inputElement = document.getElementById("guessInput");
     let message = document.getElementById("message");
 
-    if(guess === randomNumber){
+  
+    if (!inputElement) return;
+
+
+    let inputValue = inputElement.value.trim();
+
+    if (inputValue === "") {
         message.innerHTML = "⚠ Enter a valid number";
+        message.style.color = "#f87171";
         return;
     }
 
 
+    let guess = Number(inputValue);
     
     if(guess === randomNumber){
     message.innerHTML = "🎉 Congratulations! You Won!";
@@ -60,14 +68,17 @@ function checkGuess() {
 
     if(attempts === 0){
         message.innerHTML = `💀 Game Over! Number was ${randomNumber}`;
+        message.style.color = "#f87171";
         return;
     }
 
     if(guess > randomNumber){
         message.innerHTML = "📈 Too High! Try Lower";
+        message.style.color = "#38bdf8";
     }
     else{
         message.innerHTML = "📉 Too Low! Try Higher";
+        message.style.color = "#38bdf8";
     }
 }
 
