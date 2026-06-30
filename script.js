@@ -2,9 +2,9 @@
 if (!localStorage.getItem("playerLoggedIn")) {
     window.location.href = "login.html";
 }
-
+ 
 let randomNumber = Math.floor(Math.random() * 100) + 1;
-// let randomNumber = Math.floor(Math.random() * 100) + 1;
+
 
 let attempts = 10;
 let score = 100; 
