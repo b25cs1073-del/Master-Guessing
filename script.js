@@ -75,66 +75,7 @@ function checkGuess() {
         message.innerHTML = "📉 Too Low! Try Higher";
         message.style.color = "#38bdf8"; // Blue color
     }
-// }
-// function checkGuess() {
-//     let inputElement = document.getElementById("guessInput");
-//     let message = document.getElementById("message");
-
-  
-//     if (!inputElement) return;
-
-
-//     let inputValue = inputElement.value.trim();
-
-//     if (inputValue === "") {
-//         message.innerHTML = "⚠ Enter a valid number";
-//         message.style.color = "#f87171";
-//         return;
-//     }
-
-
-//     let guess = Number(inputValue);
-    
-//     if(guess === randomNumber){
-//     message.innerHTML = "🎉 Congratulations! You Won!";
-//     message.style.color = "#22c55e";
-    
-   
-//     totalScore += score;
-    
-  
-//     localStorage.setItem("totalScore", totalScore);
-    
-  
-//     const totalScoreDisplay = document.getElementById("totalScoreDisplay");
-//     if (totalScoreDisplay) {
-//         totalScoreDisplay.innerHTML = totalScore;
-//     }
-//     return;
-// } 
-// //
-
-//     attempts--;
-//     score -= 10;
-
-//     document.getElementById("attempts").innerHTML = attempts;
-//     document.getElementById("score").innerHTML = score;
-
-//     if(attempts === 0){
-//         message.innerHTML = `💀 Game Over! Number was ${randomNumber}`;
-//         message.style.color = "#f87171";
-//         return;
-//     }
-
-//     if(guess > randomNumber){
-//         message.innerHTML = "📈 Too High! Try Lower";
-//         message.style.color = "#38bdf8";
-//     }
-//     else{
-//         message.innerHTML = "📉 Too Low! Try Higher";
-//         message.style.color = "#38bdf8";
-//     }
-// }
+ }
 
 function restartGame(){
     randomNumber = Math.floor(Math.random() * 100) + 1;
