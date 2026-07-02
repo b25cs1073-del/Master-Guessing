@@ -1,48 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>  
-      <script>
-  if (localStorage.getItem("playerLoggedIn") !== "true") {
-      window.location.href = "index.html"; // Kyunki ab login page index.html ban chuka hai
-  }
-</script>
-   
-</script>
-    
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kartik_y21 Number Guessing Game</title>
+    <title>Kartik_y21 Guessing Game</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>   
-       
+<body>
 
-
-    <!-- Background Moving Div -->
-    <div id="particles-js"></div>
-
-    <!-- Aapka Game Container -->
-    <div class="container">
-        <h1>Kartik_y21 Number Guessing Game</h1>
-        <p class="range">Guess a number between 1 and 100</p>
-
-        <div class="stats">
-            <span>Attempts Left: <b id="attempts">10</b></span>
-            <span>Score: <b id="score">100</b></span>
-            <span>Total Score: <b id="totalScoreDisplay">0</b></span>
-        </div>
-
-        <input type="number" id="guessInput" placeholder="Enter your guess">
-        <button onclick="checkGuess()">Guess</button>
-        <div id="message">Start guessing...</div> 
-        <button class="restart" onclick="restartGame()">Restart Game</button>
+    <div class="audio-panel" style="display: none;">
+        <audio id="bgMusic" controls loop>
+            <source src="music.mp3" type="audio/mpeg">
+        </audio>
     </div>
 
-    <!-- 1. Pehle Particles Library (CDN) Link Ki -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> 
-    
-    <!-- 2. Fir Aapki Game Logic aur Configuration Link Ki -->
-    <script src="script.js?v=1.1"></script> 
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-area">
+                <img src="logo.png" alt="" class="logo">
+                <h1>Kartik_y21</h1> 
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="#" class="active-nav-btn" onclick="showSection('game', this)">Play Game</a></li>
+                <li><a href="#" onclick="showSection('profile', this)">Home</a></li>
+                <li><a href="#" onclick="showSection('leaderboard', this)">Leaderboard</a></li>
+                <li><a href="#" onclick="showSection('contact', this)">Contact Us</a></li>
+                <li><a href="#" onclick="logoutUser()" class="logout-link">Logout</a></li>
+            </ul>
 
+            <div onclick="shownav()" id="menu-btn" class="menu-icon">
+                <svg width="28px" height="28px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 6H21" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M3 12H21" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M3 18H21" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </div>
+        </div>
+
+        <ul class="hide mobile-dropdown">
+            <li class="close-btn-row" onclick="hidenav()">
+                <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16.19 2H7.81C4.17 2 2 4.17 2 7.81V16.18C2 19.83 4.17 22 7.81 22H16.18C19.82 22 21.99 19.83 21.99 16.19V7.81C22 4.17 19.83 2 16.19 2ZM15.36 14.3C15.65 14.59 15.65 15.07 15.36 15.36L12 13.06L9.7 15.36C8.64 14.3 10.94 12 8.64 9.7L12 10.94L14.3 8.64C15.36 9.7 13.06 12 15.36 14.3Z" fill="#ffffff"/>
+                </svg>
+            </li>
+            <li><a href="#" class="active-nav-btn" onclick="showSection('game', this); hidenav();">Play Game</a></li>
+            <li><a href="#" onclick="showSection('profile', this); hidenav();">Home </a></li>
+            <li><a href="#" onclick="showSection('leaderboard', this); hidenav();">Leaderboard</a></li>
+            <li><a href="#" onclick="showSection('contact', this); hidenav();">Contact Us</a></li>
+            <li><a href="#" onclick="logoutUser(); hidenav();" style="color: #f87171;">Logout</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content-wrapper">
+
+        <div id="game-box" class="game-container dynamic-section">
+            <h2> Number Guessing Game</h2>
+            <p class="subtitle">Guess a number between 1 and 100</p>
+            <div class="stats">
+                <span>Attempts Left: <b id="attempts">10</b></span>
+                <span>Score: <b id="score">100</b></span>
+                <span>Total Score: <b id="totalScoreDisplay">0</b></span>
+            </div>
+            <input type="number" id="guessInput" placeholder="Enter your guess">
+            <button class="action-btn" onclick="checkGuess()">Guess</button>
+            <div id="message">Start guessing...</div> 
+            <button class="restart-btn" onclick="restartGame()">Restart Game</button>
+        </div>
+
+        <div id="profile-section" class="game-container dynamic-section" style="display: none;">
+            <h2>👤 Player Profile</h2>
+            <div class="profile-card">
+                <p><strong>Username:</strong> <span id="prof-username">Kartik_Player</span></p>
+                <p><strong>Current Match Multiplier:</strong> <span id="prof-current-score">100</span></p>
+                <p><strong>Lifetime Earned Points:</strong> <span id="prof-total-score">0</span></p>
+            </div>
+            <button class="restart-btn" onclick="showSection('game')">Back to Game</button>
+        </div>
+
+        <div id="leaderboard-section" class="game-container dynamic-section" style="display: none;">
+            <h2>🏆 Server Leaderboard</h2>
+            <table class="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Competitor</th>
+                        <th>Global Score</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboard-body">
+                    <tr class="highlight-user"><td>🥇 1</td><td>Kartik_y21 (You)</td><td id="lead-user-score">0</td></tr>
+                    <tr><td>🥈 2</td><td>Rahul_King</td><td>320</td></tr>
+                    <tr><td>🥉 3</td><td>Amit_Coder</td><td>240</td></tr>
+                </tbody>
+            </table>
+            <button class="restart-btn" onclick="showSection('game')">Back to Game</button>
+        </div>
+
+        <div id="contact-section" class="game-container dynamic-section" style="display: none;">
+            <h2>📞 Game Support Desk</h2>
+            <p class="support-text">Facing any lag or issues? Ping developer system panel directly:</p>
+            <div class="contact-links">
+                <a href="https://wa.me/917870369620" target="_blank" class="contact-btn whatsapp">💬 WhatsApp Developer Support</a>
+                <a href="tel:+917870369620" class="contact-btn call">📞 Call Operations Desk</a>
+            </div>
+            <button class="restart-btn" onclick="showSection('game')">Back to Game</button>
+        </div>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> 
+
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDyKVxvY5VIqcc9ObayEmkCdP1Id90wyMI",
+            authDomain: "kartik-number-guessing-game.firebaseapp.com",
+            projectId: "kartik-number-guessing-game",
+            storageBucket: "kartik-number-guessing-game.firebasestorage.app",
+            messagingSenderId: "1025033744157",
+            appId: "1:1025033744157:web:f97901bccc04302fa4bbf4",
+            measurementId: "G-ZFN8G36PXS"
+        };
+        
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+        }
+    </script>
+
+    <script src="script.js"></script> 
 </body>
 </html>
