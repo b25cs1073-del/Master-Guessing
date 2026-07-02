@@ -1,119 +1,387 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
+/* Pura background dark aura aur full screen layout set karne ke liye */
+html, body {
+    background-color: #0b0f19; /* Same premium dark background color */
+    color: #ffffff;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    
 }
 
-body{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    overflow: hidden; /* Taaki extra scrollbar na aaye */
-    background: #0b0c10; /* Dark premium space theme background */
+/* --- GLOBAL BASE STYLES & RESET --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Particles Background Fitting */
-#particles-js {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+body {
+    background-color: #0b0f19;
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* --- FULL RANGE NAVBAR DESIGN --- */
+.navbar {
+    position: fixed;
     top: 0;
     left: 0;
-    z-index: 1; /* Piche rahega */
+    width: 100%;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(11, 85, 245, 0.2);
+    z-index: 9999;
+    padding: 0 20px;
+}  
+
+/* --- NAVBAR MAIN CONTAINER RE-ALIGNMENT --- */
+.nav-container {
+    width: 100%;            /* Poori screen ki width lega */
+    max-width: 100%;        /* Max-width 100% kiya */
+    padding: 0 40px;        /* Left aur right side se professional gap */
+    height: 70px;
+    display: flex;
+    justify-content: space-between; /* Logo ko left aur links ko right mein fenk dega */
+    align-items: center;
 }
 
-.container{
-    position: relative;
-    z-index: 2; /* Particles ke upar laane ke liye */
-    width:600px;
-    padding:50px;
-    border-radius:25px;
-    background:rgba(255,255,255,0.05); /* Backdrop setting */
-    backdrop-filter:blur(20px);
-    border:1px solid rgba(255,255,255,0.15);
-
-    box-shadow:
-    0 0 30px rgba(0,255,255,0.2),
-    0 0 60px rgba(0,255,255,0.1);
-
-    text-align:center;
-    color:white;  
+/* --- LOGO / TEXT AREA FOR EXTREME LEFT CONTAINER --- */
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: 0;        /* Left auto margin zero */
+    padding-left: 0;       /* Extra padding block reset */
 }
 
-    .container {
-    width: 450px;
-    max-width: 95%; /* Isse mobile screen par chipkega nahi, side me thoda gap rahega */
-    /* ... baki purani styling */
+/* --- TEXT SPECIFIC CONTROL --- */
+.navbar h1 {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #2df106;        
+    text-align: left;
+   
 }
 
-
-h1{
-    font-size:3.5rem;
-    margin-bottom:30px;
+/* --- PREMIUM NAVBAR STYLING LINKED TO YOUR CLASSES --- */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 12px; /* Buttons ke beech ki dori */
+    align-items: center;
 }
 
-.range{
-    color:#cbd5e1;
-    margin-bottom:25px;
+/* Sabhi normal nav buttons ka layout (Updated to Premium) */
+.nav-links a {
+    text-decoration: none;
+    color: #94a3b8; /* Default text color (Thoda sa white-gray) */
+    padding: 8px 18px;
+    border-radius: 8px; /* Smooth rounded corners */
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.3s ease; /* Smooth hover and click animation */
 }
 
-.stats{
-    display:flex;
-    justify-content:space-between;
-    margin-bottom:20px;
-    font-size:18px;
+/* Hover karne par halka sa effect */
+.nav-links a:hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
-input{
-    width:100%;
-    padding:25px;
-    border:none;
-    outline:none;
-    border-radius:12px;
-    font-size:18px;
-    margin-top:10px;
-    text-align:center;
+/* 🌟 MAGIC ACTIVE CLASS: Jo button click hoga, uspe yeh color box aayega */
+.nav-links a.active-nav-btn {
+    color: #ffffff !important;
+    background: linear-gradient(135deg, #0284c7, #0ea5e9); /* Premium Cyan/Blue Glow Box */
+    box-shadow: 0px 4px 12px rgba(14, 165, 233, 0.3); /* Button ke niche soft neon glow */
 }
 
-button{
-    width:100%;
-    padding:14px;
-    margin-top:15px;
-    border:none;
-    border-radius:12px;
-    cursor:pointer;
-    font-size:18px;
-    font-weight:bold;
-    transition:.3s;
+/* 🏆 LOGOUT BUTTON: Yeh hamesha alag rang ke box me rahega */
+.logout-link {
+    color: #ffffff !important;
+    background: linear-gradient(135deg, #e11d48, #f43f5e) !important; /* Premium Red/Rose box */
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0px 4px 12px rgba(244, 63, 94, 0.2);
+    transition: all 0.3s ease;
 }
 
-button:hover{
-    transform:translateY(-3px);
+.logout-link:hover {
+    transform: translateY(-1px); /* Hover par thoda upar uthega */
+    box-shadow: 0px 6px 16px rgba(244, 63, 94, 0.4);
 }
 
-button:first-of-type{
-    background:#06b6d4;
-    color:white;
+.menu-icon {
+    display: none;
+    cursor: pointer;
 }
 
-.restart{
-    background:#ef4444;
-    color:white;
+/* --- MOBILE SLIDE DROPDOWN STYLING --- */
+.mobile-dropdown {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 100vh;
+    background: #0f172a;
+    display: none; /* Managed by JS block/none override */
+    flex-direction: column;
+    padding: 30px 20px;
+    gap: 20px;
+    list-style: none;
+    box-shadow: -5px 0 25px rgba(0,0,0,0.5);
+    z-index: 10000;
 }
 
-#message{
-    margin-top:20px;
-    font-size:22px;
-    font-weight:bold;
-} 
+.close-btn-row {
+    align-self: flex-end;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
 
-@keyframes move{
-    from{
-        transform:translateY(0);
+.mobile-dropdown a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    display: block;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* --- CONTENT ROUTE VIEWPORT CENTERER --- */
+/* 1. Main Wrapper jo pure content ko handle karta hai (Updated) */
+.main-content-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 20px 40px 20px; /* Offset spacing fixed rakhne ke liye padding wahi purani use ki hai */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box; /* Padding se box ko todne nahi deta */
+}
+
+/* --- CORE GAME GLASS BOX BOILERPLATE CONTAINER --- */
+/* 2. 📱 MAIN CONTAINER RESPONSIBILITY FIX (Updated) */
+.game-container {
+    background: rgba(30, 41, 59, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 0 0 20px rgba(56, 189, 248, 0.15);
+    backdrop-filter: blur(12px);
+    width: 100%;             /* Mobile par screen ke hisab se 100% width le lega */
+    max-width: 500px;        /* Laptop/Desktop par 500px se bada nahi hoga */
+    margin: 20px auto;       /* Hamesha screen ke center (beech) me rahega */
+    border-radius: 16px;
+    padding: 25px;
+    text-align: center;
+    animation: fadeIn 0.4s ease-in-out forwards;
+    box-sizing: border-box;  /* Ekdum safe layout wrapper */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.game-container h2 {
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+    color: #ffffff;
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    margin-bottom: 25px;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    background: rgba(15, 23, 42, 0.6);
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.stats b {
+    color: #38bdf8;
+}
+
+#guessInput {
+    width: 100%;
+    padding: 14px;
+    background: #0f172a; /* Dark background to match the flow */
+    color: #ffffff;      /* Text white */
+    border: 2px solid rgba(56, 189, 248, 0.4); /* Neon blue border */
+    border-radius: 10px;
+    font-size: 1.2rem;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 15px;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+#guessInput:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+}
+
+.action-btn {
+    width: 100%;
+    padding: 14px;
+    background: #00b4d8;
+    color: #ffffff;
+    font-size: 1.05rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.action-btn:hover {
+    background: #0096c7;
+    transform: translateY(-1px);
+}
+
+#message {
+    margin: 20px 0;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #ffffff;
+    min-height: 24px;
+}
+
+.restart-btn {
+    width: 100%;
+    padding: 12px;
+    background: #ef4444;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s; 
+    border-color: #0ff02d;
+    box-shadow: 0 0 15px rgba(245, 2, 2, 0.5);
+}
+
+.restart-btn:hover {
+    background: #dc2626;
+}
+
+/* --- SUB PANELS COMPONENT DESIGN SYSTEM --- */
+.profile-card {
+    text-align: left;
+    background: rgba(15, 23, 42, 0.6);
+    padding: 18px;
+    border-radius: 12px;
+    margin: 20px 0;
+    border: 1px solid rgba(255,255,255,0.05); 
+    border-color: #38bdf8;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+}
+
+.profile-card p {
+    margin: 12px 0;
+    font-size: 1rem;
+    color: #cbd5e1;
+}
+
+.profile-card strong {
+    color: #38bdf8;
+}
+
+/* 3. Tables ko responsive rakhne ke liye (Leaderboard Fix) (Updated) */
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: rgba(15, 23, 42, 0.5);
+    border-radius: 12px;
+    overflow: hidden; 
+    border-color: #38bdf8;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+}
+
+.leaderboard-table th, .leaderboard-table td {
+    padding: 14px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.leaderboard-table th {
+    background: #0f172a;
+    color: #38bdf8;
+    font-weight: 600;
+}
+
+.highlight-user {
+    background: rgba(56, 189, 248, 0.12);
+    font-weight: bold;
+}
+
+.support-text {
+    font-size: 0.95rem;
+    color: #94a3b8;
+    margin-bottom: 20px;
+}
+
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.contact-btn {
+    padding: 14px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    transition: 0.2s; 
+}
+
+.whatsapp { background: #22c55e; }
+.whatsapp:hover { background: #16a34a; }
+.call { background: #0ea5e9; }
+.call:hover { background: #0284c7; }
+
+/* --- RESPONSIVE ADAPTABILITY MEDIA LAYER --- */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
     }
-    to{
-        transform:translateY(-500px);
+    .menu-icon {
+        display: block;
+    }
+}
+
+/* 4. Extra Mobile Responsive Media Query (Ekdum safe rehne ke liye) (Added) */
+@media (max-width: 480px) {
+    .game-container {
+        padding: 15px;       /* Mobile par padding thodi kam taaki andar ka text sahi dikhe */
+        width: 92%;          /* Dono side se thoda gap bachega aur premium lagega */
+    }
+    
+    .stats {
+        display: flex;
+        flex-direction: column; /* Score aur attempts upar-niche ho jayenge line katne ki jagah */
+        gap: 8px;
+        align-items: center;
     }
 }
