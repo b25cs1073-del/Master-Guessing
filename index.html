@@ -4,36 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Kartik_y21 Game</title>
-    <link rel="stylesheet" href="style.css"> <style>
-        /* Login page ke liye thodi alag styling container me */
+    <link rel="stylesheet" href="style.css"> 
+    <style>
+        /* Login toggler text aur custom label stylings */
         .toggle-text {
             margin-top: 20px;
             cursor: pointer;
-            color: #06b6d4;
+            color: #38bdf8;
             text-decoration: underline;
+            font-size: 0.95rem;
         }
-        input {
-            margin-bottom: 15px;
+        .toggle-text:hover {
+            color: #0ea5e9;
+        }
+
+        /* 🌟 INPUT LABELS KE LIYE PREMIUM STYLING 🌟 */
+        .input-group {
+            text-align: left; /* Labels ko left side me align rakhega */
+            margin-bottom: 18px;
+            width: 100%;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.95rem; /* Input text ke lagbhag barabar size */
+            font-weight: 600;
+            color: #94a3b8; /* Ek dum soft grayish-blue premium color */
+            margin-bottom: 8px; /* Label aur input ke beech ki gap */
+            letter-spacing: 0.5px;
+            text-transform: uppercase; /* Professional look ke liye caps */
         }
     </style>
 </head>
 <body>
 
-    <div id="particles-js"></div>
+    <div id="particles-js" style="position: absolute; width: 100%; height: 100%; z-index: 1;"></div>
 
-    <div class="container" style="width: 450px;">
-        <h1 id="form-title" style="font-size: 2.5rem;">Player Login</h1>
-        <p class="range" id="form-subtitle">Login to save your high scores</p>
+    <main class="main-content-wrapper" style="position: relative; z-index: 10;">
+        
+        <div class="game-container">
+            <h1 id="form-title" style="font-size: 2.2rem; margin-bottom: 8px;">Player Login</h1>
+            <p class="subtitle" id="form-subtitle">Login to save your high scores</p>
 
-        <input type="email" id="emailInput" placeholder="Enter your Email">
-        <input type="password" id="passwordInput" placeholder="Enter your Password">
-        
-        <button id="mainBtn" onclick="handleAuth()">Login</button>
-        
-        <p class="toggle-text" id="toggleLink" onclick="toggleForm()">Don't have an account? Sign Up</p>
-        
-        <div id="message" style="color: #ef4444; font-size: 16px;"></div>
-    </div>
+            <div style="margin: 25px 0;">
+                
+                
+
+                <div class="input-group">
+                    <label for="nameInput">Enter Your Name</label>
+                    <input type="text" id="nameInput" placeholder="e.g. kartik yadav">
+                </div>
+
+                <div class="input-group">
+                    <label for="emailInput">Enter Your Email</label>
+                    <input type="email" id="emailInput" placeholder="name@example.com">
+                </div>
+
+                <div class="input-group">
+                    <label for="passwordInput">Enter Your Password</label>
+                    <input type="password" id="passwordInput" placeholder="••••••••">
+                </div>
+
+            </div>
+            
+            <button id="mainBtn" class="action-btn" onclick="handleAuth()">Login</button>
+            
+            <p class="toggle-text" id="toggleLink" onclick="toggleForm()">Don't have an account? Sign Up</p>
+            
+            <div id="message" style="color: #ef4444; font-size: 16px; margin-top: 15px;"></div>
+        </div>
+
+    </main>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script type="module" src="auth.js"></script>
